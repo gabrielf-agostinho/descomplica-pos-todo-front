@@ -119,7 +119,7 @@ export class AuthService {
       );
   }
 
-  public async logoff(revoke: boolean = true, showToast: boolean = true): Promise<void> {
+  public async logoff(revoke = true, showToast = true): Promise<void> {
     if (revoke)
       await firstValueFrom(this._httpClient.patch<void>(`${environment.apiUrl}/auth/revoke`, null));
 

@@ -11,7 +11,7 @@ export class ToastService {
 
   constructor() { }
 
-  public showToast(message: string, action?: string, verticalPosition: MatSnackBarVerticalPosition = 'top', horizontalPosition: MatSnackBarHorizontalPosition = 'end', duration: number = 5): void {
+  public showToast(message: string, action?: string, verticalPosition: MatSnackBarVerticalPosition = 'top', horizontalPosition: MatSnackBarHorizontalPosition = 'end', duration = 5): void {
     this.notification$.next({
       message: message,
       action: action,
