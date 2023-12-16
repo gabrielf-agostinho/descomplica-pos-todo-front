@@ -79,7 +79,7 @@ describe('AuthService', () => {
 
     logoffPromise.then(() => {
       expect(authService['_router'].navigate).toHaveBeenCalledWith(['/login']);
-      expect(authService['_toastService'].showToast).toHaveBeenCalledWith('success', 'Logoff successful', '"We hope you come back soon :)"');
+      expect(authService['_toastService'].showToast).toHaveBeenCalledWith('Logoff successful');
     });
   }));
 });

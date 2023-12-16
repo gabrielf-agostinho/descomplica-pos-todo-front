@@ -128,7 +128,7 @@ export class AuthService {
     this._router.navigate(['/login'])
 
     if (showToast)
-      this._toastService.showToast('success', 'Logoff successful', '"We hope you come back soon :)"');
+      this._toastService.showToast('Logoff successful');
   }
 
   private _setSession(token: IToken): void {
