@@ -14,28 +14,26 @@ import { ToastService } from './toast.service';
 })
 export class AuthService {
   private readonly PREFIX: string = 'TODO';
-  private readonly ACCESS_TOKEN: string = `${this.PREFIX}-ACCESS-TOKEN`;
+  private readonly SECRET: string = `${this.PREFIX}-SECRET`;
   private readonly REFRESH_TOKEN: string = `${this.PREFIX}-REFRESH-TOKEN`;
-  private readonly AUTHENTICATED: string = `${this.PREFIX}-AUTHENTICATED`;
   private readonly CREATED_AT: string = `${this.PREFIX}-CREATED-AT`;
   private readonly EXPIRES_AT: string = `${this.PREFIX}-EXPIRES-AT`;
   private readonly USER: string = `${this.PREFIX}-USER`;
 
   private readonly KEYS: string[] = [
-    this.ACCESS_TOKEN,
+    this.SECRET,
     this.REFRESH_TOKEN,
-    this.AUTHENTICATED,
     this.CREATED_AT,
     this.EXPIRES_AT,
     this.USER
   ];
 
-  public get accessToken(): string | null {
-    return localStorage.getItem(this.ACCESS_TOKEN);
+  public get secret(): string | null {
+    return localStorage.getItem(this.SECRET);
   }
 
-  private set accessToken(accessToken: string) {
-    localStorage.setItem(this.ACCESS_TOKEN, accessToken);
+  private set secret(secret: string) {
+    localStorage.setItem(this.SECRET, secret);
   }
 
   public get refreshToken(): string | null {
@@ -44,14 +42,6 @@ export class AuthService {
 
   private set refreshToken(refreshToken: string) {
     localStorage.setItem(this.REFRESH_TOKEN, refreshToken);
-  }
-
-  public get authenticated(): boolean | null {
-    return localStorage.getItem(this.AUTHENTICATED) !== null ? JSON.parse(localStorage.getItem(this.AUTHENTICATED)!) : null;
-  }
-
-  private set authenticated(authenticated: boolean) {
-    localStorage.setItem(this.AUTHENTICATED, JSON.stringify(authenticated));
   }
 
   public get createdAt(): Date | null {
@@ -132,15 +122,14 @@ export class AuthService {
   }
 
   private _setSession(token: IToken): void {
-    this.accessToken = token.accessToken;
-    this.refreshToken = token.refreshToken;
-    this.authenticated = token.authenticated;
+    this.secret = token.secret;
+    this.refreshToken = token.refresh;
     this.createdAt = token.createdAt;
     this.expiresAt = token.expiresAt;
     this.user = token.user;
   }
 
   private _setError(error: HttpErrorResponse): Observable<never> {
-    return throwError(() => error.message);
+    return throwError(() => error);
   }
 }
