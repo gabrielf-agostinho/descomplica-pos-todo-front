@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { TodoListRoutingModule } from './todo-list-routing.module';
 import { TodoListComponent } from './todo-list-component/todo-list.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { TodoListComponent } from './todo-list-component/todo-list.component';
   ],
   imports: [
     CommonModule,
-    TodoListRoutingModule
+    TodoListRoutingModule,
+    CoreModule,
+    SharedModule
   ]
 })
 export class TodoListModule { }
