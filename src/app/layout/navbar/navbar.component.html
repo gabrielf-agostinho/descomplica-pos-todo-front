@@ -1,1 +1,12 @@
-<p>navbar works!</p>
+<p>
+  <mat-toolbar color="primary">
+    <span>Descomplica Todo</span>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+      <mat-icon fontIcon="person">user</mat-icon>
+    </button>
+    <button mat-icon-button (click)="logoff()">
+      <mat-icon fontIcon="logout"></mat-icon>
+    </button>
+  </mat-toolbar>
+</p>

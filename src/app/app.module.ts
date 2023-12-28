@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
+import { JwtInterceptorModule } from './helpers/jwt.interceptor.module';
+import { ErrorInterceptorModule } from './helpers/error.interceptor.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     NgbModule,
     CoreModule,
-    LayoutModule
+    LayoutModule,
+    JwtInterceptorModule,
+    ErrorInterceptorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
